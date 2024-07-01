@@ -34,9 +34,9 @@
 }
 
 @media screen and (max-width: 640px) {
-  .burger {
+  /* .burger {
     display: flex;
-  }
+  } */
 
   .link {
     display: none;

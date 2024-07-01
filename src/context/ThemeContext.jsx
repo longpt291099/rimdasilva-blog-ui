@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useEffect, useState } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 export const ThemeContext = createContext();
 
@@ -17,16 +18,24 @@ export const ThemeContextProvider = ({ children }) => {
   });
 
   const toggle = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  const muiTheme = createTheme({
+    palette: {
+      mode: theme,
+    },
+  });
+
   return (
-    <ThemeContext.Provider value={{ theme, toggle }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeProvider theme={muiTheme}>
+      <ThemeContext.Provider value={{ theme, toggle }}>
+        {children}
+      </ThemeContext.Provider>
+    </ThemeProvider>
   );
 };

@@ -31,7 +31,7 @@ const CardList = async ({ page, cate }) => {
   const res = await getData(page, cate);
   const data = res.data;
   return (
-    <div className={styles.container}>
+    <div className={styles.cardList}>
       <h2 className={`${styles.title}`}>
         <span className="span">BÀI VIẾT GẦN ĐÂY</span>
       </h2>
@@ -40,7 +40,9 @@ const CardList = async ({ page, cate }) => {
           <Card item={item} key={item.id} />
         ))}
       </div>
-      <Pagination hasNext={res.hasNext} hasPrev={res.hasPrev} page={page} />
+      {data && data.length > 0 && (
+        <Pagination hasNext={res.hasNext} hasPrev={res.hasPrev} page={page} />
+      )}
     </div>
   );
 };

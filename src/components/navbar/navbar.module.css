@@ -1,31 +1,65 @@
 .container {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--bg);
+}
+
+.nav {
+  height: calc(var(--header-height) + 1.5rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.navLogo {
+  flex: 1;
+}
+
+.navLogo,
+.navToggle {
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.navLogoMenu {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.navMenu {
+  flex: 2;
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--small-font-size);
+  color: var(--title-color);
+  font-weight: var(--weight-medium);
+  transition: 0.3s;
+}
+
+.navLinks {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
-}
-
-.social {
-  display: flex;
-  gap: 10px;
-  flex: 1;
-}
-
-.logo {
-  display: flex;
-  flex: 1;
-  text-align: center;
-  font-size: 36px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.links {
-  display: flex;
-  gap: 20px;
-  flex: 1;
-  align-items: center;
-  font-weight: var(--weight-medium);
 }
 
 .auth {
@@ -34,42 +68,117 @@
   gap: 10px;
 }
 
-@media screen and (max-width: 1280px) {
-  .logo {
-    font-size: 32px;
-  }
+.navIcon,
+.navClose,
+.navToggle {
+  display: none;
+}
 
-  .links {
-    font-size: 18px;
-    gap: 15px;
+/* ---------------- Active link ------------------ */
+.activeLink,
+.navLink:hover {
+  color: var(--title-color-dark);
+}
+
+/* ---------------- Change background ------------------ */
+.scrollHeader {
+  box-shadow: var(--boxShadow);
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
+
+/* ---------------- BREAKPOINTS ------------------ */
 @media screen and (max-width: 1024px) {
-  .logo {
-    text-align: left;
+  .header {
+    top: initial;
+    top: 0;
+  }
+
+  .navItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .navMenu {
+    position: fixed;
+    top: 0;
+    right: -340px;
+    max-width: 340px;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg);
+    padding: 30px;
+    z-index: 2;
+    overflow-y: auto;
+    visibility: hidden;
+    transition: 0.25s var(--cubic-in);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2); /* Add box-shadow to the left */
+  }
+
+  .showMenu {
+    transform: translateX(-340px);
+    visibility: visible;
+    transition: 0.5s var(--cubic-out);
+  }
+
+  .navLinks {
+    flex-direction: column;
+    gap: 30px;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .navList {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .navIcon {
+    /* Kiểm tra kích thước và các thuộc tính khác của icon */
+    font-size: 16px; /* Điều chỉnh kích thước icon nếu cần */
+  }
+
+  .navClose {
+    position: absolute;
+    right: 1.3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--title-color);
+    top: 5px;
+  }
+
+  .navToggle {
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  .navIcon,
+  .navClose,
+  .navToggle {
+    display: block;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .logo {
-    font-size: 24px;
+/* For small devices */
+@media screen and (max-width: 350px) {
+  .navMenu {
+    padding: 2rem 0.25rem 4rem;
   }
 
-  .container {
-    height: 70px;
-  }
-
-  .auth {
-    font-size: 16px;
-  }
-
-  .links {
-    font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .link {
-    display: none;
+  .navList {
+    column-gap: 0;
   }
 }

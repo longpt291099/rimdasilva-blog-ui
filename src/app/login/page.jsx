@@ -16,7 +16,7 @@ const LoginPage = () => {
     router.push("/");
   }
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} section`}>
       <div className={styles.wrapper}>
         <div className={styles.socialButton} onClick={() => signIn("google")}>
           Sign in with Google

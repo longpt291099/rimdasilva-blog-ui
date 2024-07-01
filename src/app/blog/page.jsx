@@ -5,14 +5,15 @@ import Menu from "@/components/menu/Menu";
 
 const BlogPage = ({ searchParams }) => {
   const page = parseInt(searchParams.page) || 1;
-
   const { cat } = searchParams;
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>C# Blog</h1>
+      <h1 className={styles.title} style={{ textTransform: "uppercase" }}>
+        {cat}
+      </h1>
       <div className={styles.content}>
-        <CardList page={page} />
+        <CardList page={page} cate={cat} />
         <Menu />
       </div>
     </div>

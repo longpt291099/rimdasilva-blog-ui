@@ -3,16 +3,28 @@ import styles from "./card.module.css";
 import Image from "next/image";
 
 const Card = ({ key, item }) => {
+  console.log(item);
+
   return (
     <div className={styles.container} key={key}>
       <div className={styles.card}>
         <div className={styles.imageContainer}>
-          <Image src="/csharpPost.jpg" alt="" layout="fill" objectFit="cover" />
+          {item.imageUrl && (
+            <Image
+              src={`${process.env.NEXT_PUBLIC_API_DOMAIN}/uploads/image/post/${item.imageUrl}`}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+            />
+          )}
         </div>
         <div className={styles.cardContent}>
           <dir className={styles.cardBadges}>
             {item.categories.map((category) => (
-              <Link href="#" className={`${styles.cardBadge}`}>
+              <Link
+                href={`/posts/${item.slug}`}
+                className={`${styles.cardBadge}`}
+              >
                 <span>{category.title}</span>
               </Link>
             ))}

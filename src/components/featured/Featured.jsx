@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Featured = () => {
   return (
-    <div className={styles.container}>
+    <div className="section">
       <h1 className={styles.title}>
         <b>Hey, rimdasilva dev here !</b> Discover my stories and creative ideas
       </h1>

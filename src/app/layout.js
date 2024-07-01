@@ -3,7 +3,6 @@ import "./globals.css";
 import Footer from "@/components/footer/Footer";
 import { ThemeContextProvider } from "@/context/ThemeContext";
 import ThemeProvider from "@/providers/ThemeProvider";
-
 import { Inter, Noto_Sans } from "next/font/google";
 import AuthProvider from "@/providers/AuthProvider";
 

@@ -11,10 +11,12 @@ export default function Home({ searchParams }) {
     <div className={styles.container}>
       <Featured />
       <CategoryList />
-      <div className={styles.content}>
-        <CardList page={page} />
-        <Menu />
-      </div>
+      <section className="section">
+        <div className={styles.content}>
+          <CardList page={page} />
+          <Menu />
+        </div>
+      </section>
     </div>
   );
 }

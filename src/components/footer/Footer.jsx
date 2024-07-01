@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className={styles.container}>
+    <section className="section">
       <div className={`card ${styles.footer}`}>
         <div className={`${styles.footerTop}`}>
           <div className={styles.footerBrand}>
@@ -70,7 +70,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

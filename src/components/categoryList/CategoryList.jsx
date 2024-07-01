@@ -19,7 +19,7 @@ const getData = async () => {
 const CategoryList = async () => {
   const data = await getData();
   return (
-    <div className={styles.container}>
+    <section className="section">
       <h2 className={`${styles.title}`}>
         <span className="span">DANH MỤC NỔI BẬT</span>
       </h2>
@@ -41,7 +41,7 @@ const CategoryList = async () => {
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

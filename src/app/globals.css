@@ -4,6 +4,8 @@
   --softBg: #f0f0f0;
   --softTextColor: #626262;
 
+  --header-height: 3rem;
+
   /** Font size */
   --fontSize-1: 2.9rem;
   --fontSize-2: 2rem;
@@ -73,6 +75,11 @@
   --radius-48: 48px;
   --radius-circle: 50%;
   --radius-pill: 200px;
+
+  /* ---------------- Z index ------------------ */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
 }
 
 ::-webkit-scrollbar {
@@ -96,7 +103,11 @@
 
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Ẩn cuộn của toàn bộ trang */
+}
+
+body.nav-active {
+  overflow: hidden;
 }
 
 html {
@@ -130,14 +141,18 @@ button {
   --textColor: #ddd;
   --softBg: #1f273a;
   --softTextColor: #a6a6a6;
+  --boxShadow: 0 1px 2px 0 rgba(255, 255, 255, 0.1);
+  --border: hsla(0, 0%, 100%, 0.15);
 }
 
 .light {
-  --bg: white;
+  --bg: #fff;
   --bg-reverse: var(--bg-oxford-blue-2);
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626262;
+  --boxShadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  --border: hsla(216, 33%, 20%, 1);
 }
 
 .container {
@@ -152,6 +167,15 @@ button {
   margin-right: auto;
   padding-left: 80px;
   padding-right: 80px;
+}
+
+.section {
+  padding: 6rem 0 2rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
 }
 /*-----------------------------------*\
   #REUSED STYLE
@@ -250,7 +274,7 @@ button {
   display: block;
   width: 96px;
   height: 3px;
-  background-color: var(--bg-carolina-blue);
+  background-color: var(--bg-cfarolina-blue);
   margin-block-start: 10px;
 }
 
@@ -294,6 +318,10 @@ button {
   .wrapper {
     max-width: 1024px;
   }
+
+  body.nav-active {
+    overflow-y: overlay;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -307,6 +335,10 @@ button {
 @media screen and (max-width: 768px) {
   .wrapper {
     max-width: 640px;
+  }
+
+  .section {
+    padding: 2rem 0 4rem;
   }
 }
 
