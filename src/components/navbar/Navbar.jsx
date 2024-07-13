@@ -7,10 +7,13 @@ import ThemeToggle from "../themeToggle/ThemeToggle";
 import AuthLink from "../authLinks/AuthLink";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { Divider } from "@mui/material";
+import ProgressBar from "../progressBar/ProgressBar";
+
+import { useProgress } from "../../context/ProgressContext"; // Import useProgress
 
 const Navbar = () => {
   /* ---------------- Change background header ------------------ */
+  const { isNavigating, startNavigation } = useProgress(); // Sử dụng context
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,8 +45,13 @@ const Navbar = () => {
 
   return (
     <header className={styles.header}>
+      <ProgressBar isVisible={isNavigating} /> {/* Thêm ProgressBar */}
       <nav className={`${styles.nav} wrapper`}>
-        <Link href="/" className={`${styles.navLogo} hover2`}>
+        <Link
+          href="/"
+          className={`${styles.navLogo} hover2`}
+          onClick={startNavigation}
+        >
           rimdasilva
         </Link>
         <div
@@ -58,7 +66,7 @@ const Navbar = () => {
               <li className={`${styles.navItem} hover1`}>
                 <i className={`uil uil-estate ${styles.navIcon}`}></i>
                 <Link href="/" className={`${styles.link} hover1`}>
-                  <span>Giới thiệu</span>
+                  Giới thiệu
                 </Link>
               </li>
               <li className={`${styles.navItem} hover1`}>
@@ -70,7 +78,13 @@ const Navbar = () => {
               <li className={`${styles.navItem} hover1`}>
                 <i className={`uil uil-file-alt ${styles.navIcon}`}></i>
                 <Link href="#skills" className={`${styles.link} hover1`}>
-                  <span>Blog</span>
+                  Blog
+                </Link>
+              </li>
+              <li className={`${styles.navItem} hover1`}>
+                <i className={`uil uil-file-alt ${styles.navIcon}`}></i>
+                <Link href="#skills" className={`${styles.link} hover1`}>
+                  Liên hệ
                 </Link>
               </li>
             </ul>
